@@ -1,0 +1,140 @@
+
+  Dibbler authors and contributors
+ ----------------------------------
+ 
+ Primary authors: 
+  - Tomasz Mrugalski
+  - Marek Senderski (inactive since 2003)
+   
+ Contributors:
+  - Tomasz Torcz
+    2005-07: Compatibility with gcc 2.x fixed
+
+  - NIIBE Yutaka
+    2005-12: Makefile improvements
+
+  - Sob
+    2006-01: Process checking in Linux
+
+  - Adrien CLERC, Bahattin DEMIRPLAK, Gaëtant ELEOUET, 
+    Mickaël GUÉRIN, Lionel GUILMIN, Lauréline PROVOST
+    from the ENSEEIHT University, Toulouse, France.
+    2006-03: DNS Updates (FQDN) support
+
+  - Krzysztof Wnuk
+    2006-05: Reverse DNS Updates, lots of enhancements
+    2006-09: Initial prefix delegation support
+
+  - Arne Bernin <arne(at)stollmann.de>
+    2006-10: XML fixes
+
+  - David Minodier  <david.minodier(at)orange-ftgroup.com>
+    2007-03: Prefix during prefix delegation is now split properly
+    2007-04: Fixes in prefix delegation
+
+  - Petr Pisar <petr.pisar(at)atlas.cz>
+    2007-03: Various fixes (ntp_add, xml syntax, tun support improved)
+    2007-08: Inactive mode for server
+    2008-07: Small xml fix
+    2008-08: /etc/resolv.conf rewriting improved
+    2008-09: Race condition under linux fixed
+    2008-09: PID is now stored in pid_t type, not int
+    2008-09: Timezone implementation and fixes
+    2008-09: Syslog support
+    2014-02: Shutdown improvement on Linux
+
+  - Michal Kowalczuk <michal(at)kowalczuk.eu>
+    2007-12: Authentication and authorization
+
+  - Liu Ming/BII group <extrafliu(at)gmail.com>
+    2008-08: CONFIRM support fixes
+    2009-03: link state change detection added
+
+  - Nghiem Nguyen/Orange FT group <vinhnghiem.nguyen(at)orange-ftgroup.com>
+    2008-10: Client classification
+
+  - Paul Schauer <p.schauer(at)comcast(dot)net> 
+    2009-04: MacOSX port.
+    2011-04: MacOSX debugging/improvements.
+
+  - Christopher Small <chsmall(at)grnoc(dot)iu(dot)edu>
+    2009-05: Max OS X fixes.
+
+  - Wojciech Guminski <wojciech.guminski(at)eti(dot)pg(dot)gda(dot)pl>
+    2010-11: Windows/Linux compilation fixes
+
+  - Aniela Mrugalska <ania.mrugalska(at)gmail(dot)com>
+    2011-05: Relay compilation fix on Windows.
+
+  - Tomasz Gierszewski <tomag(at)eti(dot)pg(dot)gda(dot)pl>
+    2011-07: NetBSD compilation fix.
+
+  - Harro Haan <hrhaan(at)gmail(dot)com>
+    2011-10: fix alignment errors (ARMv5)
+
+  - Mateusz Ozga <matozga(at)gmail(dot)com>
+    2011-11: Routing configuration
+
+  - Christof Schulz (develop(at)kristov(dot)de>
+    2012-02: Fix for prefix delegation segfault
+
+  - Mickael Marchand <mikmak(at)freenux(dot)org>
+    2012-03: link-local client reservation, several fixes
+
+  - Tao Cui <Cuit(at)ihep(dot)ac(dot)cn>
+    2013-01: interface-id shorter than 4 bytes are now handled ok
+
+  - Grzegorz Pluto
+    200?-2012: reconfigure support
+
+  - Jean-Jacques Sarton <jj(dot)sarton(at)web(dot)de>
+    2013-03: Patch for double free in file read error handling
+    2013-03: Patch for stop command not working on Linux
+    2013-04: Patch for socket descriptor == 0 in daemon mode
+
+  - Vaclav Michalek <vaclav(dot)michalek(at)upol(dot)cz>
+    2013-03: Various WIN32 fixes
+    2013-03: gethostname for WIN32
+    2013-03: Inactive-mode for Win32
+    2013-04: OptFQDN improvements
+
+  - George Joseph <george(dot)joseph(at)fairview5(dot)com>
+    2013-08: Fixed leases are now kept in the database (bug #291)
+    2013-08: Client segfault when incomplete/invalid AUTH info specified (bug #289)
+    2013-08: Log message fix (bug #292)
+
+  - Patrick Pichon <patrick(dot)pipiche(dot)fr>
+    2013-09: Fedora RPM script
+
+  - Hernan Martinez <hernan(dot)c(dot)martinez(at)gmail(dot)com>
+    2013-10: Service dependency for Windows Vista and newer fix
+    2013-10: Script calling fix.
+    2013-11: Migration to Visual Studio 2013
+    2013-11: Fix for reconfigure-key
+    2013-12: Win32: detection of admin privileges
+    2014-02: Win32: Proper shutdown from Microsft Mgmt Console (bug #162)
+    2014-02: Vendor-spec info option with IPv6 address in it
+
+  - Shine- (https://github.com/Shine-)
+    2014-06: Address renewals on WIN32 systems.
+
+  - Maciek Fijalkowski <macfij7(at)wp(dot)pl>
+    2014-06: Prefix scope added to the client parser.
+    2014-07: Prefix sanity checks on the client side.
+    2014-09: More thorough sanity checks for multiple IA_PDs on the client side.
+
+  - Justin Cormack <justin(at)specialbusservice(dot)com>
+    2014-09: Added missing includes for NetBSD (and probably other BSDs)
+
+  - John Davidge <jodavidg(at)cisco(dot)com> and
+    Baodong (Robert) Li <baoli(at)cisco(dot)com>
+    2015-03: it is possible for the client to select an address to be used
+    2015-03: client's working directory can be selected with -w dir
+    2015-03: time calculation workarounds
+    2015-03: bind-to-address improvements
+
+  - Etienne Buira <etienne(dot)buira(at)gmail(dot)com>
+    2015-07: Fix in IA_TA status code
+
+  Dibbler uses poslib library to communicate with DNS servers (DNS Update mechanism).
+  Poslib is written by Meilof Veeningen <meilof@users.sourceforge.net>
