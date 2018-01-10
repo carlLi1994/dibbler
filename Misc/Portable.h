@@ -187,6 +187,7 @@ struct link_state_notify_t
 #define OPTION_NIS_DOMAIN_FILENAME   "option-nis-domain"
 #define OPTION_NISP_SERVERS_FILENAME "option-nisplus-servers"
 #define OPTION_NISP_DOMAIN_FILENAME  "option-nisplus-domain"
+#define OPTION_EXTRA_FILENAME        "extra-option"
 
 /* --- bulk leasequery --- */
 #define BULKLQ_ACCEPT false

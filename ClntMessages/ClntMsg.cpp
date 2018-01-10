@@ -231,7 +231,6 @@ TClntMsg::TClntMsg(int iface, SPtr<TIPv6Addr> addr, char* buf, int bufSize)
 		pos+=length;
 		continue;
 	    }
-
 	}
 
 	if ( (ptr) && (ptr->isValid()) ) {
@@ -257,6 +256,7 @@ TClntMsg::TClntMsg(int iface, SPtr<TIPv6Addr> addr, char* buf, int bufSize)
 SPtr<TOpt> TClntMsg::parseExtraOption(const char *buf, unsigned int code, unsigned int length)
 {
     SPtr<TOpt> ptr;
+	SPtr<TOptString> extraOpiton ;
     SPtr<TClntCfgIface> cfgIface = TClntCfgMgr::instance().getIface(Iface);
     TClntCfgIface::TOptionStatusLst ExtraOpts = cfgIface->getExtraOptions();
     for (TClntCfgIface::TOptionStatusLst::iterator exp = ExtraOpts.begin();
@@ -285,7 +285,13 @@ SPtr<TOpt> TClntMsg::parseExtraOption(const char *buf, unsigned int code, unsign
 	case TOpt::Layout_String:
 	{
 	    ptr = new TOptString(code, buf, length, this);
+        char temp[32];
 	    Log(Info) << tmp.str() << "single string" << LogEnd;
+        SPtr<TClntIfaceIface> iface = (Ptr*)ClntIfaceMgr().getIfaceByID(getIface());
+        
+        extraOpiton = (Ptr*) ptr;
+        snprintf(temp, sizeof(temp), "%s%d", OPTION_EXTRA_FILENAME, code);
+        iface->setExtraOptionString( extraOpiton->getString(), temp);
 	    break;
 	}
 	case TOpt::Layout_StringLst:

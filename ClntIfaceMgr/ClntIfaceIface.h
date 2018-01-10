@@ -35,6 +35,7 @@ class TClntIfaceIface: public TIfaceIface {
     bool setNISServerLst(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, List(TIPv6Addr) addrs);
     bool setNISDomain(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, const std::string& domain);
     bool setNISPServerLst(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, List(TIPv6Addr) addrs);
+    bool setExtraOptionString(const std::string& str, char * file);
     bool setNISPDomain(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, const std::string& domain);
     bool setLifetime(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, unsigned int life);
 

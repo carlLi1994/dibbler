@@ -492,6 +492,10 @@ bool TClntIfaceIface::setNISPDomain(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, const
     return true;
 }
 
+bool TClntIfaceIface::setExtraOptionString(const std::string& str, char* file) {
+    this->setString(file, str.c_str());
+    return true;
+}
 bool TClntIfaceIface::setLifetime(SPtr<TDUID> duid, SPtr<TIPv6Addr> srv, unsigned int life) {
     this->LifetimeTimeout = life;
     this->LifetimeTimestamp = (uint32_t)time(NULL);

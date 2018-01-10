@@ -10,6 +10,10 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include <unistd.h>
+#include<fcntl.h>
 #include "SmartPtr.h"
 #include "DHCPClient.h"
 #include "ClntTransMgr.h"
@@ -153,6 +157,9 @@ char* TDHCPClient::getCtrlIface(){
 void TDHCPClient::run()
 {
     SPtr<TMsg> msg;
+    int isBound = 0;
+    char buffer[32] = {0};
+    int fd;
     while ( (!this->isDone()) && !ClntTransMgr().isDone() )
     {
         if (serviceShutdown)
@@ -189,6 +196,37 @@ void TDHCPClient::run()
             Log(Cont) << LogEnd;
 
             ClntTransMgr().relayMsg(msg);
+            if (0 == isBound)
+            {
+                isBound++;
+
+                continue; //dhcp会收到两次message
+            }
+            else if (1 == isBound)
+            {
+                isBound++;
+                snprintf(buffer, sizeof(buffer), "status=bound");
+            }            
+            else 
+            {
+                if (0 == strncmp(msg->getName().c_str(), "REPLY", strlen("REPLY")))
+                {
+                    snprintf(buffer, sizeof(buffer), "status=renew");
+                }
+                else
+                {
+                    continue;
+                }
+            }
+           
+            fd = open("/tmp/dhcpv6_fifo", O_WRONLY);
+
+            if (buffer)
+            {
+                write(fd, buffer, sizeof(buffer));
+            }
+            close(fd);
+            isBound = true;
         }
     }
     Log(Notice) << "Bye bye." << LogEnd;
